@@ -134,10 +134,43 @@ namespace Demo_QLNH.From
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)// Sự kiện click vào Admin
         {
             frmAdmin f = new frmAdmin();
-            this.Hide();
+            //this.Hide();
+            f.InsertFood += F_InsertFood;
+            f.DeleteFood += F_DeleteFood;
+            f.UpdateFood += F_UpdateFood;
             f.ShowDialog();
             this.Show();
         }
+
+        private void F_UpdateFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as CategoryDTO).ID);
+            if (lsvBill.Tag!=null)
+            {
+                ShowBill((lsvBill.Tag as TableDTO).ID);
+            }
+           
+        }
+
+        private void F_DeleteFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as CategoryDTO).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as TableDTO).ID);
+            }
+            LoadTable();
+        }
+
+        private void F_InsertFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as CategoryDTO).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as TableDTO).ID);
+            }
+        }
+
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)// Bắt sự kiện chọn Category để load Food theo trên cbox
         {
             int id = 0;
@@ -154,6 +187,11 @@ namespace Demo_QLNH.From
         {
 
             TableDTO table = lsvBill.Tag as TableDTO;// lấy ra  table hiện tại đang chọn
+            if (table==null)
+            {
+                MessageBox.Show(" Chưa chọn bàn !");
+                return;
+            }
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);// Lấy ra id Bill hiện tại bằng cách truyền idTable
             int foodID = (cbFood.SelectedItem as FoodDTO).ID;// Lấy ra id Food từ combox
             int count = (int)nmFoodCount.Value;//Số lượng fodd add vào lấy từ numberMenu

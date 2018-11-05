@@ -33,8 +33,8 @@ namespace Demo_QLNH.DAO
         public List<FoodDTO> GetListFood()
         {
             List<FoodDTO> list = new List<FoodDTO>();
-            string query = "Select * From Food";
-            //string query = "Select id [ID],name [Tên Món],idCategory [Mã Danh Mục],price [Giá] From Food";
+            //string query = "Select * From Food";
+            string query = "Select f.id[ID],f.name[Tên Món],fc.name[Danh Mục],f.price[Gía] From Food as f join FoodCategory as fc on f.idCategory=fc.id";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {

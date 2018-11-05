@@ -29,7 +29,7 @@ namespace Demo_QLNH.DTO
 
 
             this.Status = (int)row["status"];
-            this.Discount = (int)row["discount"];
+          //  this.Discount = (int)row["discount"];
         }
         private DateTime? dateCheckIn;
         public DateTime? DateCheckIn

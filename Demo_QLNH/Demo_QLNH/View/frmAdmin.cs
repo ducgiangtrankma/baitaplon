@@ -106,6 +106,10 @@ namespace Demo_QLNH.From
             {
                 MessageBox.Show(" Thêm thành công !");
                 LoadListFood();
+                if (insertFood !=null)
+                {
+                    insertFood(this, new EventArgs());
+                }
             }
             else
             {
@@ -114,19 +118,34 @@ namespace Demo_QLNH.From
         }
         private void btnEditFood_Click(object sender, EventArgs e)
         {
-            int idFood = int.Parse( txtIdFood.Text);
-            string name = txtNameFood.Text;
-            int idCategory = (cbFoodCategory.SelectedItem as CategoryDTO).ID;
-            float price = float.Parse(txtPriceFood.Text);
-            if (FoodDAO.Instance.UpdateFood(idFood, name, idCategory, price))
+
+            try
             {
-                MessageBox.Show(" Sửa thành công !");
-                LoadListFood();
+                int idFood = int.Parse(txtIdFood.Text);
+                string name = txtNameFood.Text;
+                int idCategory = (cbFoodCategory.SelectedItem as CategoryDTO).ID;
+                float price = float.Parse(txtPriceFood.Text);
+                if (FoodDAO.Instance.UpdateFood(idFood, name, idCategory, price))
+                {
+                    MessageBox.Show(" Sửa thành công !");
+                    LoadListFood();
+                    if (updateFood != null)
+                    {
+                        updateFood(this, new EventArgs());
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(" Sửa thất bại !");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show(" Sửa thất bại !");
+
+                MessageBox.Show("Bạn chưa nhập đủ thông tin !", "Thông Báo");
             }
+                
+        
         }
         private void btnDeleteFood_Click(object sender, EventArgs e)
         {
@@ -135,12 +154,38 @@ namespace Demo_QLNH.From
             {
                 MessageBox.Show(" Xóa thành công !");
                 LoadListFood();
+                if (deleteFood !=null)
+                {
+                    deleteFood(this, new EventArgs());
+                }
             }
             else
             {
                 MessageBox.Show(" Xóa thất bại !");
             }
         }
+        // Tạo các even insert, update, delete Food
+        private event EventHandler insertFood;
+        public event EventHandler InsertFood
+        {
+            add { insertFood += value; }
+            remove { insertFood -= value; }
+        }
+
+        private event EventHandler deleteFood;
+        public event EventHandler DeleteFood
+        {
+            add { deleteFood += value; }
+            remove { deleteFood -= value; }
+        }
+
+        private event EventHandler updateFood;
+        public event EventHandler UpdateFood
+        {
+            add { updateFood += value; }
+            remove { updateFood -= value; }
+        }
+
 
 
 
