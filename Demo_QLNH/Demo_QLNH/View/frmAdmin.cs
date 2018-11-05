@@ -15,6 +15,8 @@ namespace Demo_QLNH.From
     public partial class frmAdmin : Form
     {
         BindingSource foodList = new BindingSource();// Xử lí việc soure bị thay đổi do dùng binding. Bug khi bấm xem không load được index
+        BindingSource accountList = new BindingSource();
+        public AccountDTO loginAccount;
         public frmAdmin()
         {
             InitializeComponent();
@@ -24,11 +26,14 @@ namespace Demo_QLNH.From
 
         void Load()
         {
+            dtgvAccount.DataSource = accountList;
             dtgvFood.DataSource = foodList;
             LoadListBillByDate(dtpkDateStart.Value, dtpkDateEnd.Value);// Load Bill theo mốc ngày
             LoadDateTimePickerBill();// Load ngày 
             LoadListFood();
+            loadAccount();
             AddFoodBinding();
+            AddAccountBinDing();
             LoadCategoryIntoCombobox(cbFoodCategory);
         }
         void LoadDateTimePickerBill()// Load time
@@ -52,12 +57,98 @@ namespace Demo_QLNH.From
         }
         void AddFoodBinding()// Binding dữ liệu lên view
         {
-            txtNameFood.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name",true, DataSourceUpdateMode.Never));
+            txtNameFood.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name",true, DataSourceUpdateMode.Never)); // true , ... never để không truyền ngược dữ liệu từ textbox về view khi chưa goi event
             txtIdFood.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID",true,DataSourceUpdateMode.Never));
             txtPriceFood.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Price",true,DataSourceUpdateMode.Never));
          
+        }
+        void AddAccountBinDing()
+        {
+            txtNameAccount.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
+            txtNameShowAccount.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
+            nbType.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
 
 
+        }
+        void loadAccount()
+        {
+            accountList.DataSource = AccountDAO.Instance.GetListAccount();
+        }
+
+        void AddAccount (string userName , string disPlayName, int type)
+        {
+            try
+            {
+                if (AccountDAO.Instance.InsertAccount(userName, disPlayName, type))
+                {
+                    MessageBox.Show(" Thêm Tài Khoản Thành Công", "Thông Báo");
+                }
+                else
+                {
+                    MessageBox.Show(" Thêm Thất Bại", "Thông Báo");
+                }
+                loadAccount();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Bạn chưa điền đủ thông tin !","Thông Báo");
+            }
+            
+          
+        }
+        void EditAccount(string userName, string disPlayName, int type)
+        {
+            try
+            {
+                if (AccountDAO.Instance.UpdateAccount(userName, disPlayName, type))
+                {
+                    MessageBox.Show(" Sửa Tài Khoản Thành Công", "Thông Báo");
+                }
+                else
+                {
+                    MessageBox.Show(" Sửa Thất Bại", "Thông Báo");
+                }
+                loadAccount();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Bạn chưa điền đủ thông tin !", "Thông Báo");
+            }
+            
+
+        }
+        void DeleteAccount(string userName)
+        {
+            
+            if (loginAccount.UserName.Equals(userName))
+            {
+                MessageBox.Show("Không thể xóa tài khoản đang đăng nhập !","Thông Báo");
+                return;
+            }
+            if (AccountDAO.Instance.DeleteAccount(userName))
+            {
+                MessageBox.Show("Xóa tài khoản thành công","Thông Báo");
+            }
+            else
+            {
+                MessageBox.Show("Xóa tài khoản thất bại","Thông Báo");
+            }
+
+            loadAccount();
+        }
+
+        void ResetPass(string userName)
+        {
+            if (AccountDAO.Instance.ResetPassword(userName))
+            {
+                MessageBox.Show("Đặt lại mật khẩu thành công","Thông Báo");
+            }
+            else
+            {
+                MessageBox.Show("Đặt lại mật khẩu thất bại","Thông Báo");
+            }
         }
         List<FoodDTO> SearchFoodByName (string nameFood)
         {
@@ -80,9 +171,10 @@ namespace Demo_QLNH.From
         private void txtIdFood_TextChanged(object sender, EventArgs e)//Lấy data từ gridview 
             
         {
-            try
+
+            if (dtgvFood.SelectedCells.Count >0)
             {
-                if (dtgvFood.SelectedCells.Count > 0)
+                try
                 {
                     int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;// laays ra idCategory từ datagridView
                                                                                                 // Khi chọn vào 1 dòng trong view sẽ lấy ra các ô và lấy ra ô có tên như yêu cầu
@@ -101,15 +193,14 @@ namespace Demo_QLNH.From
                     }
                     cbFoodCategory.SelectedIndex = index; // lấy ra địa chỉ index
 
-
                 }
-            }
-            catch (Exception)
-            {
+                catch 
+                {
+                  
+                }
+                  
 
-                MessageBox.Show(" Không thể tìm kiếm !", "Thông Báo ");
             }
-            
             
         }
         private void btnAddFood_Click(object sender, EventArgs e)
@@ -121,7 +212,7 @@ namespace Demo_QLNH.From
                 float price = float.Parse(txtPriceFood.Text);
                 if (FoodDAO.Instance.InsertFood(name, idCategory, price))
                 {
-                    MessageBox.Show(" Thêm thành công !");
+                    MessageBox.Show(" Thêm món thành công !","Thông Báo");
                     LoadListFood();
                     if (insertFood != null)
                     {
@@ -130,7 +221,7 @@ namespace Demo_QLNH.From
                 }
                 else
                 {
-                    MessageBox.Show(" Thêm thất bại !");
+                    MessageBox.Show(" Thêm món thất bại !","Thông Báo");
                 }
             }
             catch (Exception)
@@ -151,7 +242,7 @@ namespace Demo_QLNH.From
                 float price = float.Parse(txtPriceFood.Text);
                 if (FoodDAO.Instance.UpdateFood(idFood, name, idCategory, price))
                 {
-                    MessageBox.Show(" Sửa thành công !");
+                    MessageBox.Show(" Sửa món thành công !","Thông Báo");
                     LoadListFood();
                     if (updateFood != null)
                     {
@@ -160,7 +251,7 @@ namespace Demo_QLNH.From
                 }
                 else
                 {
-                    MessageBox.Show(" Sửa thất bại !");
+                    MessageBox.Show(" Sửa món thất bại !","Thông Báo");
                 }
             }
             catch (Exception)
@@ -176,7 +267,7 @@ namespace Demo_QLNH.From
             int idFood = int.Parse(txtIdFood.Text);
             if (FoodDAO.Instance.DeleteFood(idFood))
             {
-                MessageBox.Show(" Xóa thành công !");
+                MessageBox.Show(" Xóa thành công !","Thông Báo");
                 LoadListFood();
                 if (deleteFood !=null)
                 {
@@ -185,7 +276,7 @@ namespace Demo_QLNH.From
             }
             else
             {
-                MessageBox.Show(" Xóa thất bại !");
+                MessageBox.Show(" Xóa thất bại !","Thông Báo");
             }
          
         }
@@ -212,7 +303,38 @@ namespace Demo_QLNH.From
         }
         private void btnSearchFood_Click(object sender, EventArgs e)
         {
-            foodList.DataSource = SearchFoodByName(txtSearchFood.Text);
+           foodList.DataSource = SearchFoodByName(txtSearchFood.Text);
+        }
+
+        private void btnShowAccount_Click(object sender, EventArgs e)
+        {
+            loadAccount();
+        }
+
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txtNameAccount.Text;
+            string disPlayName = txtNameShowAccount.Text;
+            int type = (int)nbType.Value;
+            AddAccount(userName, disPlayName, type);
+        }
+        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txtNameAccount.Text;
+            DeleteAccount(userName);
+        }
+
+        private void btnEditAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txtNameAccount.Text;
+            string disPlayName = txtNameShowAccount.Text;
+            int type = (int)nbType.Value;
+            EditAccount(userName , disPlayName, type);
+        }
+        private void btnResetPassWord_Click(object sender, EventArgs e)
+        {
+            string userName = txtNameAccount.Text;
+            ResetPass(userName);
         }
 
 

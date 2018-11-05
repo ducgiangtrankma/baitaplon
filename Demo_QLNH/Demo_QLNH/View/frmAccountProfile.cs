@@ -80,9 +80,14 @@ namespace Demo_QLNH.From
         {
             UpdateAccountInfo();
         }
+
+        private void btnExit_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 
-    
+
     public class AccountEvent : EventArgs // Even level2 - Có tham khảo 
     {
         private AccountDTO acc;

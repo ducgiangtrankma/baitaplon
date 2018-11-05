@@ -26,7 +26,7 @@ namespace Demo_QLNH.DAO
         }
         private DataProvider() { }
         //Tao chuoi connection
-        private string connectionSTR = @"Server = DESKTOP-B7OOLHO\SQLEXPRESS ; DataBase = QuanLyCafe123; User ID = sa ; pwd = giang2419981";
+        private string connectionSTR = @"Server = DESKTOP-B7OOLHO\SQLEXPRESS ; DataBase = BTL_QLBH_DEMO; User ID = sa ; pwd = giang2419981";
         // Tao ham ket noi 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

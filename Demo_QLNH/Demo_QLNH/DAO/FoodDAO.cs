@@ -68,7 +68,8 @@ namespace Demo_QLNH.DAO
         public List<FoodDTO> SearchFoodByName (string name)
         {
             List<FoodDTO> list = new List<FoodDTO>();
-            string query =string.Format( "Select * From Food where name = N'{0}' ", name);
+            //string query =string.Format( "Select * From Food where name like N'%{0}%' ", name);
+            string query =string.Format( " Select * From Food where [dbo].[fuConvertToUnsign1](name) like N'%' + [dbo].[fuConvertToUnsign1](N'{0}') + '%'" , name );
            // string query = "Select f.id[ID],f.name[Tên Món],fc.name[Danh Mục],f.price[Gía] From Food as f join FoodCategory as fc on f.idCategory=fc.id";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)

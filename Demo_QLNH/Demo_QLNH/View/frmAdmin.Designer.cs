@@ -90,8 +90,9 @@
             this.btnAddTable = new System.Windows.Forms.Button();
             this.tpAccount = new System.Windows.Forms.TabPage();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.nbType = new System.Windows.Forms.NumericUpDown();
             this.btnResetPassWord = new System.Windows.Forms.Button();
-            this.cbAccountType = new System.Windows.Forms.ComboBox();
             this.txtNameShowAccount = new System.Windows.Forms.TextBox();
             this.txtNameAccount = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -100,8 +101,6 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.txtSearchAccount = new System.Windows.Forms.TextBox();
-            this.btnSearchAccount = new System.Windows.Forms.Button();
             this.btnShowAccount = new System.Windows.Forms.Button();
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
@@ -128,6 +127,7 @@
             this.panel11.SuspendLayout();
             this.tpAccount.SuspendLayout();
             this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbType)).BeginInit();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.panel14.SuspendLayout();
@@ -705,8 +705,9 @@
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.label13);
+            this.panel12.Controls.Add(this.nbType);
             this.panel12.Controls.Add(this.btnResetPassWord);
-            this.panel12.Controls.Add(this.cbAccountType);
             this.panel12.Controls.Add(this.txtNameShowAccount);
             this.panel12.Controls.Add(this.txtNameAccount);
             this.panel12.Controls.Add(this.label12);
@@ -717,33 +718,48 @@
             this.panel12.Size = new System.Drawing.Size(322, 301);
             this.panel12.TabIndex = 5;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(200, 284);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(119, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Mật khẩu mặc đinh là 0";
+            // 
+            // nbType
+            // 
+            this.nbType.Location = new System.Drawing.Point(128, 165);
+            this.nbType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nbType.Name = "nbType";
+            this.nbType.Size = new System.Drawing.Size(181, 20);
+            this.nbType.TabIndex = 4;
+            this.nbType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btnResetPassWord
             // 
-            this.btnResetPassWord.Location = new System.Drawing.Point(135, 241);
+            this.btnResetPassWord.Location = new System.Drawing.Point(129, 212);
             this.btnResetPassWord.Name = "btnResetPassWord";
             this.btnResetPassWord.Size = new System.Drawing.Size(108, 23);
             this.btnResetPassWord.TabIndex = 3;
             this.btnResetPassWord.Text = "Đặt Lại Mật Khẩu";
             this.btnResetPassWord.UseVisualStyleBackColor = true;
-            // 
-            // cbAccountType
-            // 
-            this.cbAccountType.FormattingEnabled = true;
-            this.cbAccountType.Location = new System.Drawing.Point(121, 188);
-            this.cbAccountType.Name = "cbAccountType";
-            this.cbAccountType.Size = new System.Drawing.Size(181, 21);
-            this.cbAccountType.TabIndex = 2;
+            this.btnResetPassWord.Click += new System.EventHandler(this.btnResetPassWord_Click);
             // 
             // txtNameShowAccount
             // 
-            this.txtNameShowAccount.Location = new System.Drawing.Point(122, 147);
+            this.txtNameShowAccount.Location = new System.Drawing.Point(129, 123);
             this.txtNameShowAccount.Name = "txtNameShowAccount";
             this.txtNameShowAccount.Size = new System.Drawing.Size(180, 20);
             this.txtNameShowAccount.TabIndex = 1;
             // 
             // txtNameAccount
             // 
-            this.txtNameAccount.Location = new System.Drawing.Point(122, 96);
+            this.txtNameAccount.Location = new System.Drawing.Point(129, 72);
             this.txtNameAccount.Name = "txtNameAccount";
             this.txtNameAccount.Size = new System.Drawing.Size(180, 20);
             this.txtNameAccount.TabIndex = 1;
@@ -751,7 +767,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(29, 197);
+            this.label12.Location = new System.Drawing.Point(36, 173);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 13);
             this.label12.TabIndex = 0;
@@ -760,7 +776,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(29, 150);
+            this.label10.Location = new System.Drawing.Point(36, 126);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(75, 13);
             this.label10.TabIndex = 0;
@@ -769,7 +785,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(29, 104);
+            this.label11.Location = new System.Drawing.Point(36, 80);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(84, 13);
             this.label11.TabIndex = 0;
@@ -795,8 +811,6 @@
             // 
             // panel14
             // 
-            this.panel14.Controls.Add(this.txtSearchAccount);
-            this.panel14.Controls.Add(this.btnSearchAccount);
             this.panel14.Controls.Add(this.btnShowAccount);
             this.panel14.Controls.Add(this.btnEditAccount);
             this.panel14.Controls.Add(this.btnDeleteAccount);
@@ -806,57 +820,45 @@
             this.panel14.Size = new System.Drawing.Size(828, 82);
             this.panel14.TabIndex = 3;
             // 
-            // txtSearchAccount
-            // 
-            this.txtSearchAccount.Location = new System.Drawing.Point(491, 31);
-            this.txtSearchAccount.Name = "txtSearchAccount";
-            this.txtSearchAccount.Size = new System.Drawing.Size(194, 20);
-            this.txtSearchAccount.TabIndex = 1;
-            // 
-            // btnSearchAccount
-            // 
-            this.btnSearchAccount.Location = new System.Drawing.Point(716, 28);
-            this.btnSearchAccount.Name = "btnSearchAccount";
-            this.btnSearchAccount.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchAccount.TabIndex = 0;
-            this.btnSearchAccount.Text = "Tìm Kiếm";
-            this.btnSearchAccount.UseVisualStyleBackColor = true;
-            // 
             // btnShowAccount
             // 
-            this.btnShowAccount.Location = new System.Drawing.Point(383, 28);
+            this.btnShowAccount.Location = new System.Drawing.Point(525, 30);
             this.btnShowAccount.Name = "btnShowAccount";
             this.btnShowAccount.Size = new System.Drawing.Size(75, 23);
             this.btnShowAccount.TabIndex = 0;
             this.btnShowAccount.Text = "Xem";
             this.btnShowAccount.UseVisualStyleBackColor = true;
+            this.btnShowAccount.Click += new System.EventHandler(this.btnShowAccount_Click);
             // 
             // btnEditAccount
             // 
-            this.btnEditAccount.Location = new System.Drawing.Point(264, 28);
+            this.btnEditAccount.Location = new System.Drawing.Point(406, 30);
             this.btnEditAccount.Name = "btnEditAccount";
             this.btnEditAccount.Size = new System.Drawing.Size(75, 23);
             this.btnEditAccount.TabIndex = 0;
             this.btnEditAccount.Text = "Sửa";
             this.btnEditAccount.UseVisualStyleBackColor = true;
+            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // btnDeleteAccount
             // 
-            this.btnDeleteAccount.Location = new System.Drawing.Point(156, 28);
+            this.btnDeleteAccount.Location = new System.Drawing.Point(298, 30);
             this.btnDeleteAccount.Name = "btnDeleteAccount";
             this.btnDeleteAccount.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteAccount.TabIndex = 0;
             this.btnDeleteAccount.Text = "Xóa";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // btnAddAccount
             // 
-            this.btnAddAccount.Location = new System.Drawing.Point(47, 28);
+            this.btnAddAccount.Location = new System.Drawing.Point(189, 30);
             this.btnAddAccount.Name = "btnAddAccount";
             this.btnAddAccount.Size = new System.Drawing.Size(75, 23);
             this.btnAddAccount.TabIndex = 0;
             this.btnAddAccount.Text = "Thêm";
             this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
             // frmAdmin
             // 
@@ -898,10 +900,10 @@
             this.tpAccount.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbType)).EndInit();
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -975,15 +977,14 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.DataGridView dtgvAccount;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.TextBox txtSearchAccount;
-        private System.Windows.Forms.Button btnSearchAccount;
         private System.Windows.Forms.Button btnShowAccount;
         private System.Windows.Forms.Button btnEditAccount;
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnAddAccount;
         private System.Windows.Forms.Button btnResetPassWord;
-        private System.Windows.Forms.ComboBox cbAccountType;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbFoodCategory;
+        private System.Windows.Forms.NumericUpDown nbType;
+        private System.Windows.Forms.Label label13;
     }
 }

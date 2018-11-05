@@ -135,6 +135,7 @@ namespace Demo_QLNH.From
         {
             frmAdmin f = new frmAdmin();
             //this.Hide();
+            f.loginAccount = LoginAccount;
             f.InsertFood += F_InsertFood;
             f.DeleteFood += F_DeleteFood;
             f.UpdateFood += F_UpdateFood;
@@ -189,7 +190,7 @@ namespace Demo_QLNH.From
             TableDTO table = lsvBill.Tag as TableDTO;// lấy ra  table hiện tại đang chọn
             if (table==null)
             {
-                MessageBox.Show(" Chưa chọn bàn !");
+                MessageBox.Show(" Bạn Chưa chọn bàn !","Thông Báo");
                 return;
             }
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);// Lấy ra id Bill hiện tại bằng cách truyền idTable
@@ -239,6 +240,15 @@ namespace Demo_QLNH.From
         }
 
 
+        private void thanhToánToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnCheckOut_Click(this, new EventArgs());
+        }
+
+        private void thêmMónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnAddFood_Click(this, new EventArgs());
+        }
 
 
 
