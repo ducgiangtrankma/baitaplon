@@ -1,0 +1,13 @@
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.csprojResolveAssemblyReference.cache
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.From.frmLogin.resources
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.Properties.Resources.resources
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.csproj.GenerateResource.Cache
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.csproj.CoreCompileInputs.cache
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\bin\Debug\Demo_QLNH.exe.config
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\bin\Debug\Demo_QLNH.exe
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\bin\Debug\Demo_QLNH.pdb
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.exe
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.pdb
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.From.frmAccountProfile.resources
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.From.frmTableManager.resources
+E:\Bai_Tap_Lon\Demo_QLNH\Demo_QLNH\Demo_QLNH\obj\Debug\Demo_QLNH.From.frmAdmin.resources
