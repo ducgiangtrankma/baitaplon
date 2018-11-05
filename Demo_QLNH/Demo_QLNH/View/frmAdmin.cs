@@ -21,6 +21,7 @@ namespace Demo_QLNH.From
             Load();
         }
         #region methods
+
         void Load()
         {
             dtgvFood.DataSource = foodList;
@@ -58,6 +59,12 @@ namespace Demo_QLNH.From
 
 
         }
+        List<FoodDTO> SearchFoodByName (string nameFood)
+        {
+            List<FoodDTO> listFood = FoodDAO.Instance.SearchFoodByName(nameFood);
+
+            return listFood;
+        }
         #endregion
 
 
@@ -73,48 +80,65 @@ namespace Demo_QLNH.From
         private void txtIdFood_TextChanged(object sender, EventArgs e)//Lấy data từ gridview 
             
         {
-
-            if (dtgvFood.SelectedCells.Count >0)
+            try
             {
-                  int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;// laays ra idCategory từ datagridView
-                // Khi chọn vào 1 dòng trong view sẽ lấy ra các ô và lấy ra ô có tên như yêu cầu
-                  CategoryDTO category = CategoryDAO.Instance.GetCategoryByID(id); // khởi tạo danh sách category
-                 // cbFoodCategory.SelectedItem = category;
-                int index = -1;
-                int i = 0;
-                foreach (CategoryDTO item in cbFoodCategory.Items)
+                if (dtgvFood.SelectedCells.Count > 0)
                 {
-                    if (item.ID==category.ID)
+                    int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;// laays ra idCategory từ datagridView
+                                                                                                // Khi chọn vào 1 dòng trong view sẽ lấy ra các ô và lấy ra ô có tên như yêu cầu
+                    CategoryDTO category = CategoryDAO.Instance.GetCategoryByID(id); // khởi tạo danh sách category
+                                                                                     // cbFoodCategory.SelectedItem = category;
+                    int index = -1;
+                    int i = 0;
+                    foreach (CategoryDTO item in cbFoodCategory.Items)
                     {
-                        index = i;
-                        break;
+                        if (item.ID == category.ID)
+                        {
+                            index = i;
+                            break;
+                        }
+                        i++;
                     }
-                    i++;
-                }
-                cbFoodCategory.SelectedIndex = index; // lấy ra địa chỉ index
-                
+                    cbFoodCategory.SelectedIndex = index; // lấy ra địa chỉ index
 
+
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show(" Không thể tìm kiếm !", "Thông Báo ");
+            }
+            
             
         }
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            string name = txtNameFood.Text;
-            int idCategory = (cbFoodCategory.SelectedItem as CategoryDTO).ID;
-            float price = float.Parse(txtPriceFood.Text);
-            if (FoodDAO.Instance.InsertFood(name,idCategory,price))
+            try
             {
-                MessageBox.Show(" Thêm thành công !");
-                LoadListFood();
-                if (insertFood !=null)
+                string name = txtNameFood.Text;
+                int idCategory = (cbFoodCategory.SelectedItem as CategoryDTO).ID;
+                float price = float.Parse(txtPriceFood.Text);
+                if (FoodDAO.Instance.InsertFood(name, idCategory, price))
                 {
-                    insertFood(this, new EventArgs());
+                    MessageBox.Show(" Thêm thành công !");
+                    LoadListFood();
+                    if (insertFood != null)
+                    {
+                        insertFood(this, new EventArgs());
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(" Thêm thất bại !");
                 }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show(" Thêm thất bại !");
+
+                MessageBox.Show("Bạn chưa nhập đủ thông tin !", "Thông Báo");
             }
+           
         }
         private void btnEditFood_Click(object sender, EventArgs e)
         {
@@ -163,6 +187,7 @@ namespace Demo_QLNH.From
             {
                 MessageBox.Show(" Xóa thất bại !");
             }
+         
         }
         // Tạo các even insert, update, delete Food
         private event EventHandler insertFood;
@@ -185,6 +210,11 @@ namespace Demo_QLNH.From
             add { updateFood += value; }
             remove { updateFood -= value; }
         }
+        private void btnSearchFood_Click(object sender, EventArgs e)
+        {
+            foodList.DataSource = SearchFoodByName(txtSearchFood.Text);
+        }
+
 
 
 
