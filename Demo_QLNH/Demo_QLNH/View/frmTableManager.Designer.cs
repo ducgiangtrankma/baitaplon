@@ -30,22 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTableManager));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnThongtintaikhoan = new System.Windows.Forms.ToolStripMenuItem();
-            this.thôngTinCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.plTable = new System.Windows.Forms.Panel();
-            this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
             this.plManager = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lsvBill = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
             this.nmFoodCount = new System.Windows.Forms.NumericUpDown();
-            this.btnAddFood = new System.Windows.Forms.Button();
             this.lbFood = new System.Windows.Forms.Label();
             this.lbCategory = new System.Windows.Forms.Label();
             this.cbFood = new System.Windows.Forms.ComboBox();
@@ -60,137 +47,55 @@
             this.btnCheckOut = new System.Windows.Forms.Button();
             this.btnSwitchTable = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnAddFood = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.chứcNăngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thanhToánToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thêmMónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lsvBill = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.plTable = new System.Windows.Forms.Panel();
+            this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
+            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnThongtintaikhoan = new System.Windows.Forms.ToolStripMenuItem();
+            this.thôngTinCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            this.plTable.SuspendLayout();
             this.plManager.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodCount)).BeginInit();
             this.plHelper.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.plTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adminToolStripMenuItem,
-            this.mnThongtintaikhoan,
-            this.chứcNăngToolStripMenuItem});
+            this.mnThongtintaikhoan});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(956, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // adminToolStripMenuItem
-            // 
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.adminToolStripMenuItem.Text = "Admin";
-            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
-            // 
-            // mnThongtintaikhoan
-            // 
-            this.mnThongtintaikhoan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thôngTinCáNhânToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem});
-            this.mnThongtintaikhoan.Name = "mnThongtintaikhoan";
-            this.mnThongtintaikhoan.Size = new System.Drawing.Size(129, 20);
-            this.mnThongtintaikhoan.Text = "Thông Tin Tài Khoản";
-            // 
-            // thôngTinCáNhânToolStripMenuItem
-            // 
-            this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
-            this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
-            // 
-            // đăngXuấtToolStripMenuItem
-            // 
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
-            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
-            // 
-            // plTable
-            // 
-            this.plTable.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.plTable.Controls.Add(this.flpTable);
-            this.plTable.Location = new System.Drawing.Point(13, 28);
-            this.plTable.Name = "plTable";
-            this.plTable.Size = new System.Drawing.Size(376, 375);
-            this.plTable.TabIndex = 1;
-            // 
-            // flpTable
-            // 
-            this.flpTable.AutoScroll = true;
-            this.flpTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpTable.Location = new System.Drawing.Point(0, 0);
-            this.flpTable.Name = "flpTable";
-            this.flpTable.Size = new System.Drawing.Size(376, 375);
-            this.flpTable.TabIndex = 0;
-            // 
             // plManager
             // 
             this.plManager.Controls.Add(this.panel2);
             this.plManager.Controls.Add(this.panel1);
-            this.plManager.Location = new System.Drawing.Point(396, 28);
+            this.plManager.Location = new System.Drawing.Point(396, 39);
             this.plManager.Name = "plManager";
             this.plManager.Size = new System.Drawing.Size(371, 375);
             this.plManager.TabIndex = 2;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lsvBill);
-            this.panel2.Location = new System.Drawing.Point(4, 89);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(364, 283);
-            this.panel2.TabIndex = 1;
-            // 
-            // lsvBill
-            // 
-            this.lsvBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lsvBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lsvBill.GridLines = true;
-            this.lsvBill.Location = new System.Drawing.Point(0, 0);
-            this.lsvBill.Name = "lsvBill";
-            this.lsvBill.Size = new System.Drawing.Size(364, 283);
-            this.lsvBill.TabIndex = 0;
-            this.lsvBill.UseCompatibleStateImageBehavior = false;
-            this.lsvBill.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tên Món";
-            this.columnHeader1.Width = 120;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Số Lượng";
-            this.columnHeader2.Width = 80;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Đơn Giá";
-            this.columnHeader3.Width = 90;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Thành Tiền";
-            this.columnHeader4.Width = 90;
-            // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.nmFoodCount);
             this.panel1.Controls.Add(this.btnAddFood);
             this.panel1.Controls.Add(this.lbFood);
@@ -219,16 +124,6 @@
             0,
             0,
             0});
-            // 
-            // btnAddFood
-            // 
-            this.btnAddFood.Location = new System.Drawing.Point(249, 10);
-            this.btnAddFood.Name = "btnAddFood";
-            this.btnAddFood.Size = new System.Drawing.Size(57, 51);
-            this.btnAddFood.TabIndex = 2;
-            this.btnAddFood.Text = "Thêm Món";
-            this.btnAddFood.UseVisualStyleBackColor = true;
-            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
             // lbFood
             // 
@@ -267,6 +162,7 @@
             // 
             // plHelper
             // 
+            this.plHelper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.plHelper.Controls.Add(this.label5);
             this.plHelper.Controls.Add(this.txtTotalPrice);
             this.plHelper.Controls.Add(this.nmDisCount);
@@ -276,7 +172,7 @@
             this.plHelper.Controls.Add(this.btnCheckOut);
             this.plHelper.Controls.Add(this.btnSwitchTable);
             this.plHelper.Controls.Add(this.panel3);
-            this.plHelper.Location = new System.Drawing.Point(773, 28);
+            this.plHelper.Location = new System.Drawing.Point(773, 37);
             this.plHelper.Name = "plHelper";
             this.plHelper.Size = new System.Drawing.Size(176, 375);
             this.plHelper.TabIndex = 3;
@@ -369,6 +265,16 @@
             this.panel3.Size = new System.Drawing.Size(156, 100);
             this.panel3.TabIndex = 0;
             // 
+            // btnAddFood
+            // 
+            this.btnAddFood.Location = new System.Drawing.Point(249, 10);
+            this.btnAddFood.Name = "btnAddFood";
+            this.btnAddFood.Size = new System.Drawing.Size(57, 51);
+            this.btnAddFood.TabIndex = 2;
+            this.btnAddFood.Text = "Thêm Món";
+            this.btnAddFood.UseVisualStyleBackColor = true;
+            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -380,36 +286,110 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // chứcNăngToolStripMenuItem
+            // panel2
             // 
-            this.chứcNăngToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thanhToánToolStripMenuItem,
-            this.thêmMónToolStripMenuItem});
-            this.chứcNăngToolStripMenuItem.Name = "chứcNăngToolStripMenuItem";
-            this.chứcNăngToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.chứcNăngToolStripMenuItem.Text = "Chức Năng";
+            this.panel2.BackgroundImage = global::Demo_QLNH.Properties.Resources.backdep;
+            this.panel2.Controls.Add(this.lsvBill);
+            this.panel2.Location = new System.Drawing.Point(4, 89);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(364, 283);
+            this.panel2.TabIndex = 1;
             // 
-            // thanhToánToolStripMenuItem
+            // lsvBill
             // 
-            this.thanhToánToolStripMenuItem.Name = "thanhToánToolStripMenuItem";
-            this.thanhToánToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.thanhToánToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.thanhToánToolStripMenuItem.Text = "Thanh Toán";
-            this.thanhToánToolStripMenuItem.Click += new System.EventHandler(this.thanhToánToolStripMenuItem_Click);
+            this.lsvBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lsvBill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsvBill.GridLines = true;
+            this.lsvBill.Location = new System.Drawing.Point(0, 0);
+            this.lsvBill.Name = "lsvBill";
+            this.lsvBill.Size = new System.Drawing.Size(364, 283);
+            this.lsvBill.TabIndex = 0;
+            this.lsvBill.UseCompatibleStateImageBehavior = false;
+            this.lsvBill.View = System.Windows.Forms.View.Details;
             // 
-            // thêmMónToolStripMenuItem
+            // columnHeader1
             // 
-            this.thêmMónToolStripMenuItem.Name = "thêmMónToolStripMenuItem";
-            this.thêmMónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.thêmMónToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.thêmMónToolStripMenuItem.Text = "Thêm Món";
-            this.thêmMónToolStripMenuItem.Click += new System.EventHandler(this.thêmMónToolStripMenuItem_Click);
+            this.columnHeader1.Text = "Tên Món";
+            this.columnHeader1.Width = 120;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Số Lượng";
+            this.columnHeader2.Width = 80;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Đơn Giá";
+            this.columnHeader3.Width = 90;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Thành Tiền";
+            this.columnHeader4.Width = 90;
+            // 
+            // plTable
+            // 
+            this.plTable.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.plTable.BackgroundImage = global::Demo_QLNH.Properties.Resources.backdep;
+            this.plTable.Controls.Add(this.flpTable);
+            this.plTable.Location = new System.Drawing.Point(14, 39);
+            this.plTable.Name = "plTable";
+            this.plTable.Size = new System.Drawing.Size(376, 375);
+            this.plTable.TabIndex = 1;
+            // 
+            // flpTable
+            // 
+            this.flpTable.AutoScroll = true;
+            this.flpTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.flpTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpTable.Location = new System.Drawing.Point(0, 0);
+            this.flpTable.Name = "flpTable";
+            this.flpTable.Size = new System.Drawing.Size(376, 375);
+            this.flpTable.TabIndex = 0;
+            // 
+            // adminToolStripMenuItem
+            // 
+            this.adminToolStripMenuItem.Image = global::Demo_QLNH.Properties.Resources.admin;
+            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
+            // 
+            // mnThongtintaikhoan
+            // 
+            this.mnThongtintaikhoan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thôngTinCáNhânToolStripMenuItem,
+            this.đăngXuấtToolStripMenuItem});
+            this.mnThongtintaikhoan.Image = global::Demo_QLNH.Properties.Resources.manger;
+            this.mnThongtintaikhoan.Name = "mnThongtintaikhoan";
+            this.mnThongtintaikhoan.Size = new System.Drawing.Size(145, 20);
+            this.mnThongtintaikhoan.Text = "Thông Tin Tài Khoản";
+            // 
+            // thôngTinCáNhânToolStripMenuItem
+            // 
+            this.thôngTinCáNhânToolStripMenuItem.Image = global::Demo_QLNH.Properties.Resources.info;
+            this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
+            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
+            this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
+            // 
+            // đăngXuấtToolStripMenuItem
+            // 
+            this.đăngXuấtToolStripMenuItem.Image = global::Demo_QLNH.Properties.Resources.logout;
+            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // frmTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(956, 425);
             this.Controls.Add(this.plHelper);
             this.Controls.Add(this.plManager);
@@ -422,9 +402,7 @@
             this.Text = "Quản Lý";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.plTable.ResumeLayout(false);
             this.plManager.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodCount)).EndInit();
@@ -433,6 +411,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.plTable.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,8 +452,5 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.FlowLayoutPanel flpTable;
-        private System.Windows.Forms.ToolStripMenuItem chứcNăngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thanhToánToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thêmMónToolStripMenuItem;
     }
 }

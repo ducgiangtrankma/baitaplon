@@ -42,7 +42,44 @@ namespace Demo_QLNH.DAO
                 return category;
             }
             return category;
-            
+
         }
+        public bool DeleteCategory(int idCategory)
+        {
+            //BillInfoDAO.Instance.DeleteBillInfoByIDFood(idCategory);
+
+            string query = string.Format("Delete Food where id = {0}", idCategory);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+        public bool UpdateCategory(int idCategory, string nameCategory)
+        {
+            string query = string.Format("update FoodCategory set name = N'{0}' where id = {1}", nameCategory, idCategory);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+
+        }
+        public bool InsetCategory(string nameCategory)
+        {
+            string query = string.Format("Insert into FoodCategory( name) values (N'{0}')", nameCategory);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public List<CategoryDTO> SearchCategoryByName(string name)
+        {
+            List<CategoryDTO> list = new List<CategoryDTO>();
+            //string query =string.Format( "Select * From Food where name like N'%{0}%' ", name);
+            string query = string.Format(" Select * From FoodCategory where [dbo].[fuConvertToUnsign1](name) like N'%' + [dbo].[fuConvertToUnsign1](N'{0}') + '%'", name);
+            // string query = "Select f.id[ID],f.name[Tên Món],fc.name[Danh Mục],f.price[Gía] From Food as f join FoodCategory as fc on f.idCategory=fc.id";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+               CategoryDTO category = new CategoryDTO(item);
+                list.Add(category);
+            }
+            return list;
+        }
+
     }
 }

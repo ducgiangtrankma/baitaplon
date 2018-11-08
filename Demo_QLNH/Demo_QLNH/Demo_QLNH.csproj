@@ -127,6 +127,29 @@
   <ItemGroup>
     <None Include="Resources\manager-png-image-26596.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Backgroud_Maneger.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backdep.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admin.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manger.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,6 +34,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtgvBill = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.btnViewBill = new System.Windows.Forms.Button();
             this.dtpkDateEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpkDateStart = new System.Windows.Forms.DateTimePicker();
@@ -73,7 +74,7 @@
             this.btnAddFood = new System.Windows.Forms.Button();
             this.tpTable = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.txtSatusTable = new System.Windows.Forms.TextBox();
             this.txtNameTable = new System.Windows.Forms.TextBox();
             this.txtIdTable = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -148,6 +149,7 @@
             // 
             // tpBill
             // 
+            this.tpBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tpBill.Controls.Add(this.panel2);
             this.tpBill.Controls.Add(this.panel1);
             this.tpBill.Location = new System.Drawing.Point(4, 22);
@@ -156,7 +158,6 @@
             this.tpBill.Size = new System.Drawing.Size(852, 412);
             this.tpBill.TabIndex = 0;
             this.tpBill.Text = "Doanh Thu";
-            this.tpBill.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -178,6 +179,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.btnViewBill);
             this.panel1.Controls.Add(this.dtpkDateEnd);
             this.panel1.Controls.Add(this.dtpkDateStart);
@@ -186,9 +188,18 @@
             this.panel1.Size = new System.Drawing.Size(839, 73);
             this.panel1.TabIndex = 0;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(427, 24);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 2;
+            this.btnPrint.Text = "In Thống Kê";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            // 
             // btnViewBill
             // 
-            this.btnViewBill.Location = new System.Drawing.Point(379, 26);
+            this.btnViewBill.Location = new System.Drawing.Point(301, 24);
             this.btnViewBill.Name = "btnViewBill";
             this.btnViewBill.Size = new System.Drawing.Size(75, 23);
             this.btnViewBill.TabIndex = 1;
@@ -216,6 +227,7 @@
             // 
             // tpFoodCategory
             // 
+            this.tpFoodCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tpFoodCategory.Controls.Add(this.panel5);
             this.tpFoodCategory.Controls.Add(this.panel4);
             this.tpFoodCategory.Controls.Add(this.panel3);
@@ -225,7 +237,6 @@
             this.tpFoodCategory.Size = new System.Drawing.Size(852, 412);
             this.tpFoodCategory.TabIndex = 1;
             this.tpFoodCategory.Text = "Danh Mục";
-            this.tpFoodCategory.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -310,51 +321,63 @@
             // 
             // btnSearchCategory
             // 
+            this.btnSearchCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnSearchCategory.Location = new System.Drawing.Point(716, 28);
             this.btnSearchCategory.Name = "btnSearchCategory";
             this.btnSearchCategory.Size = new System.Drawing.Size(75, 23);
             this.btnSearchCategory.TabIndex = 0;
             this.btnSearchCategory.Text = "Tìm Kiếm";
-            this.btnSearchCategory.UseVisualStyleBackColor = true;
+            this.btnSearchCategory.UseVisualStyleBackColor = false;
+            this.btnSearchCategory.Click += new System.EventHandler(this.btnSearchCategory_Click);
             // 
             // btnShowCategory
             // 
+            this.btnShowCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnShowCategory.Location = new System.Drawing.Point(383, 28);
             this.btnShowCategory.Name = "btnShowCategory";
             this.btnShowCategory.Size = new System.Drawing.Size(75, 23);
             this.btnShowCategory.TabIndex = 0;
             this.btnShowCategory.Text = "Xem";
-            this.btnShowCategory.UseVisualStyleBackColor = true;
+            this.btnShowCategory.UseVisualStyleBackColor = false;
+            this.btnShowCategory.Click += new System.EventHandler(this.btnShowCategory_Click);
             // 
             // btnEditCategory
             // 
+            this.btnEditCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnEditCategory.Location = new System.Drawing.Point(264, 28);
             this.btnEditCategory.Name = "btnEditCategory";
             this.btnEditCategory.Size = new System.Drawing.Size(75, 23);
             this.btnEditCategory.TabIndex = 0;
             this.btnEditCategory.Text = "Sửa";
-            this.btnEditCategory.UseVisualStyleBackColor = true;
+            this.btnEditCategory.UseVisualStyleBackColor = false;
+            this.btnEditCategory.Click += new System.EventHandler(this.btnEditCategory_Click);
             // 
             // btnDeleteCategory
             // 
+            this.btnDeleteCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDeleteCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDeleteCategory.Location = new System.Drawing.Point(156, 28);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteCategory.TabIndex = 0;
             this.btnDeleteCategory.Text = "Xóa";
-            this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.UseVisualStyleBackColor = false;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
             // btnAddCategory
             // 
+            this.btnAddCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAddCategory.Location = new System.Drawing.Point(47, 28);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
             this.btnAddCategory.TabIndex = 0;
             this.btnAddCategory.Text = "Thêm";
-            this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.UseVisualStyleBackColor = false;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // tpFood
             // 
+            this.tpFood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tpFood.Controls.Add(this.panel6);
             this.tpFood.Controls.Add(this.panel7);
             this.tpFood.Controls.Add(this.panel8);
@@ -363,7 +386,6 @@
             this.tpFood.Size = new System.Drawing.Size(852, 412);
             this.tpFood.TabIndex = 2;
             this.tpFood.Text = "Thức Ăn";
-            this.tpFood.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
@@ -487,56 +509,62 @@
             // 
             // btnSearchFood
             // 
+            this.btnSearchFood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnSearchFood.Location = new System.Drawing.Point(716, 28);
             this.btnSearchFood.Name = "btnSearchFood";
             this.btnSearchFood.Size = new System.Drawing.Size(75, 23);
             this.btnSearchFood.TabIndex = 0;
             this.btnSearchFood.Text = "Tìm Kiếm";
-            this.btnSearchFood.UseVisualStyleBackColor = true;
+            this.btnSearchFood.UseVisualStyleBackColor = false;
             this.btnSearchFood.Click += new System.EventHandler(this.btnSearchFood_Click);
             // 
             // btnShowFood
             // 
+            this.btnShowFood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnShowFood.Location = new System.Drawing.Point(383, 28);
             this.btnShowFood.Name = "btnShowFood";
             this.btnShowFood.Size = new System.Drawing.Size(75, 23);
             this.btnShowFood.TabIndex = 0;
             this.btnShowFood.Text = "Xem";
-            this.btnShowFood.UseVisualStyleBackColor = true;
+            this.btnShowFood.UseVisualStyleBackColor = false;
             this.btnShowFood.Click += new System.EventHandler(this.btnShowFood_Click);
             // 
             // btnEditFood
             // 
+            this.btnEditFood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnEditFood.Location = new System.Drawing.Point(264, 28);
             this.btnEditFood.Name = "btnEditFood";
             this.btnEditFood.Size = new System.Drawing.Size(75, 23);
             this.btnEditFood.TabIndex = 0;
             this.btnEditFood.Text = "Sửa";
-            this.btnEditFood.UseVisualStyleBackColor = true;
+            this.btnEditFood.UseVisualStyleBackColor = false;
             this.btnEditFood.Click += new System.EventHandler(this.btnEditFood_Click);
             // 
             // btnDeleteFood
             // 
+            this.btnDeleteFood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDeleteFood.Location = new System.Drawing.Point(156, 28);
             this.btnDeleteFood.Name = "btnDeleteFood";
             this.btnDeleteFood.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteFood.TabIndex = 0;
             this.btnDeleteFood.Text = "Xóa";
-            this.btnDeleteFood.UseVisualStyleBackColor = true;
+            this.btnDeleteFood.UseVisualStyleBackColor = false;
             this.btnDeleteFood.Click += new System.EventHandler(this.btnDeleteFood_Click);
             // 
             // btnAddFood
             // 
+            this.btnAddFood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAddFood.Location = new System.Drawing.Point(47, 28);
             this.btnAddFood.Name = "btnAddFood";
             this.btnAddFood.Size = new System.Drawing.Size(75, 23);
             this.btnAddFood.TabIndex = 0;
             this.btnAddFood.Text = "Thêm";
-            this.btnAddFood.UseVisualStyleBackColor = true;
+            this.btnAddFood.UseVisualStyleBackColor = false;
             this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
             // tpTable
             // 
+            this.tpTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tpTable.Controls.Add(this.panel9);
             this.tpTable.Controls.Add(this.panel10);
             this.tpTable.Controls.Add(this.panel11);
@@ -545,11 +573,10 @@
             this.tpTable.Size = new System.Drawing.Size(852, 412);
             this.tpTable.TabIndex = 3;
             this.tpTable.Text = "Bàn Ăn";
-            this.tpTable.UseVisualStyleBackColor = true;
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.cbStatus);
+            this.panel9.Controls.Add(this.txtSatusTable);
             this.panel9.Controls.Add(this.txtNameTable);
             this.panel9.Controls.Add(this.txtIdTable);
             this.panel9.Controls.Add(this.label9);
@@ -560,13 +587,12 @@
             this.panel9.Size = new System.Drawing.Size(322, 301);
             this.panel9.TabIndex = 5;
             // 
-            // cbStatus
+            // txtSatusTable
             // 
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(122, 192);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(180, 21);
-            this.cbStatus.TabIndex = 2;
+            this.txtSatusTable.Location = new System.Drawing.Point(122, 193);
+            this.txtSatusTable.Name = "txtSatusTable";
+            this.txtSatusTable.Size = new System.Drawing.Size(180, 20);
+            this.txtSatusTable.TabIndex = 2;
             // 
             // txtNameTable
             // 
@@ -648,51 +674,57 @@
             // 
             // btnSearchTable
             // 
+            this.btnSearchTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnSearchTable.Location = new System.Drawing.Point(716, 28);
             this.btnSearchTable.Name = "btnSearchTable";
             this.btnSearchTable.Size = new System.Drawing.Size(75, 23);
             this.btnSearchTable.TabIndex = 0;
             this.btnSearchTable.Text = "Tìm Kiếm";
-            this.btnSearchTable.UseVisualStyleBackColor = true;
+            this.btnSearchTable.UseVisualStyleBackColor = false;
             // 
             // btnShowTable
             // 
+            this.btnShowTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnShowTable.Location = new System.Drawing.Point(383, 28);
             this.btnShowTable.Name = "btnShowTable";
             this.btnShowTable.Size = new System.Drawing.Size(75, 23);
             this.btnShowTable.TabIndex = 0;
             this.btnShowTable.Text = "Xem";
-            this.btnShowTable.UseVisualStyleBackColor = true;
+            this.btnShowTable.UseVisualStyleBackColor = false;
             // 
             // btnEditTable
             // 
+            this.btnEditTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnEditTable.Location = new System.Drawing.Point(264, 28);
             this.btnEditTable.Name = "btnEditTable";
             this.btnEditTable.Size = new System.Drawing.Size(75, 23);
             this.btnEditTable.TabIndex = 0;
             this.btnEditTable.Text = "Sửa";
-            this.btnEditTable.UseVisualStyleBackColor = true;
+            this.btnEditTable.UseVisualStyleBackColor = false;
             // 
             // btnDeleteTable
             // 
+            this.btnDeleteTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDeleteTable.Location = new System.Drawing.Point(156, 28);
             this.btnDeleteTable.Name = "btnDeleteTable";
             this.btnDeleteTable.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteTable.TabIndex = 0;
             this.btnDeleteTable.Text = "Xóa";
-            this.btnDeleteTable.UseVisualStyleBackColor = true;
+            this.btnDeleteTable.UseVisualStyleBackColor = false;
             // 
             // btnAddTable
             // 
+            this.btnAddTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAddTable.Location = new System.Drawing.Point(47, 28);
             this.btnAddTable.Name = "btnAddTable";
             this.btnAddTable.Size = new System.Drawing.Size(75, 23);
             this.btnAddTable.TabIndex = 0;
             this.btnAddTable.Text = "Thêm";
-            this.btnAddTable.UseVisualStyleBackColor = true;
+            this.btnAddTable.UseVisualStyleBackColor = false;
             // 
             // tpAccount
             // 
+            this.tpAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tpAccount.Controls.Add(this.panel12);
             this.tpAccount.Controls.Add(this.panel13);
             this.tpAccount.Controls.Add(this.panel14);
@@ -701,7 +733,6 @@
             this.tpAccount.Size = new System.Drawing.Size(852, 412);
             this.tpAccount.TabIndex = 4;
             this.tpAccount.Text = "Tài Khoản";
-            this.tpAccount.UseVisualStyleBackColor = true;
             // 
             // panel12
             // 
@@ -742,12 +773,13 @@
             // 
             // btnResetPassWord
             // 
-            this.btnResetPassWord.Location = new System.Drawing.Point(129, 212);
+            this.btnResetPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnResetPassWord.Location = new System.Drawing.Point(153, 229);
             this.btnResetPassWord.Name = "btnResetPassWord";
             this.btnResetPassWord.Size = new System.Drawing.Size(108, 23);
             this.btnResetPassWord.TabIndex = 3;
             this.btnResetPassWord.Text = "Đặt Lại Mật Khẩu";
-            this.btnResetPassWord.UseVisualStyleBackColor = true;
+            this.btnResetPassWord.UseVisualStyleBackColor = false;
             this.btnResetPassWord.Click += new System.EventHandler(this.btnResetPassWord_Click);
             // 
             // txtNameShowAccount
@@ -822,42 +854,46 @@
             // 
             // btnShowAccount
             // 
+            this.btnShowAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnShowAccount.Location = new System.Drawing.Point(525, 30);
             this.btnShowAccount.Name = "btnShowAccount";
             this.btnShowAccount.Size = new System.Drawing.Size(75, 23);
             this.btnShowAccount.TabIndex = 0;
             this.btnShowAccount.Text = "Xem";
-            this.btnShowAccount.UseVisualStyleBackColor = true;
+            this.btnShowAccount.UseVisualStyleBackColor = false;
             this.btnShowAccount.Click += new System.EventHandler(this.btnShowAccount_Click);
             // 
             // btnEditAccount
             // 
+            this.btnEditAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnEditAccount.Location = new System.Drawing.Point(406, 30);
             this.btnEditAccount.Name = "btnEditAccount";
             this.btnEditAccount.Size = new System.Drawing.Size(75, 23);
             this.btnEditAccount.TabIndex = 0;
             this.btnEditAccount.Text = "Sửa";
-            this.btnEditAccount.UseVisualStyleBackColor = true;
+            this.btnEditAccount.UseVisualStyleBackColor = false;
             this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // btnDeleteAccount
             // 
+            this.btnDeleteAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDeleteAccount.Location = new System.Drawing.Point(298, 30);
             this.btnDeleteAccount.Name = "btnDeleteAccount";
             this.btnDeleteAccount.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteAccount.TabIndex = 0;
             this.btnDeleteAccount.Text = "Xóa";
-            this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.UseVisualStyleBackColor = false;
             this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // btnAddAccount
             // 
+            this.btnAddAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAddAccount.Location = new System.Drawing.Point(189, 30);
             this.btnAddAccount.Name = "btnAddAccount";
             this.btnAddAccount.Size = new System.Drawing.Size(75, 23);
             this.btnAddAccount.TabIndex = 0;
             this.btnAddAccount.Text = "Thêm";
-            this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.UseVisualStyleBackColor = false;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
             // frmAdmin
@@ -954,7 +990,6 @@
         private System.Windows.Forms.Button btnDeleteFood;
         private System.Windows.Forms.Button btnAddFood;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.TextBox txtNameTable;
         private System.Windows.Forms.TextBox txtIdTable;
         private System.Windows.Forms.Label label9;
@@ -986,5 +1021,7 @@
         private System.Windows.Forms.ComboBox cbFoodCategory;
         private System.Windows.Forms.NumericUpDown nbType;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtSatusTable;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

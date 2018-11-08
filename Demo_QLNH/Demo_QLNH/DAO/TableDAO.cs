@@ -37,5 +37,35 @@ namespace Demo_QLNH.DAO
             return tablelist;
 
         }
+        public bool InsertTable()
+        {
+            string query = string.Format("");
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public bool UpdateTable()
+        {
+            string query = string.Format("");
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public bool DeleteTable()
+        {
+            string query = string.Format("");
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public List<TableDTO> GetListTable()
+        {
+            List<TableDTO> list = new List<TableDTO>();
+            string query = "Select * From TableFood";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                TableDTO table = new TableDTO(item);
+                list.Add(table);
+            }
+            return list;
+        }
     }
 }

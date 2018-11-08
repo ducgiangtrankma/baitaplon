@@ -58,6 +58,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackgroundImage = global::Demo_QLNH.Properties.Resources.backdep;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.btnExit);
             this.panel3.Controls.Add(this.btnLogin);
@@ -72,6 +73,7 @@
             // 
             // btnExit
             // 
+            this.btnExit.BackgroundImage = global::Demo_QLNH.Properties.Resources.backdep;
             this.btnExit.Location = new System.Drawing.Point(235, 120);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
@@ -82,6 +84,7 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.BackgroundImage = global::Demo_QLNH.Properties.Resources.backdep;
             this.btnLogin.Location = new System.Drawing.Point(119, 120);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
@@ -97,7 +100,6 @@
             this.txtPassWord.PasswordChar = '*';
             this.txtPassWord.Size = new System.Drawing.Size(191, 20);
             this.txtPassWord.TabIndex = 2;
-            this.txtPassWord.Text = "giang2419981";
             // 
             // txtUserName
             // 
@@ -105,12 +107,12 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(191, 20);
             this.txtUserName.TabIndex = 1;
-            this.txtUserName.Text = "ducgiangkma";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 79);
+            this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(34, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 0;
@@ -119,7 +121,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 31);
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(34, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
@@ -127,6 +130,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackgroundImage = global::Demo_QLNH.Properties.Resources.backdep;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(13, 12);
@@ -136,6 +140,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImage = global::Demo_QLNH.Properties.Resources.backdep;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::Demo_QLNH.Properties.Resources.Login_pic;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);

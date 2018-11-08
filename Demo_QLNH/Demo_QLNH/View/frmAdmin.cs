@@ -16,6 +16,8 @@ namespace Demo_QLNH.From
     {
         BindingSource foodList = new BindingSource();// Xử lí việc soure bị thay đổi do dùng binding. Bug khi bấm xem không load được index
         BindingSource accountList = new BindingSource();
+        BindingSource categoryList = new BindingSource();
+        BindingSource tableList = new BindingSource();
         public AccountDTO loginAccount;
         public frmAdmin()
         {
@@ -28,12 +30,17 @@ namespace Demo_QLNH.From
         {
             dtgvAccount.DataSource = accountList;
             dtgvFood.DataSource = foodList;
+            dtgvCategory.DataSource = categoryList;
             LoadListBillByDate(dtpkDateStart.Value, dtpkDateEnd.Value);// Load Bill theo mốc ngày
             LoadDateTimePickerBill();// Load ngày 
             LoadListFood();
-            loadAccount();
+            LoadListCategory();
+            loadListAccount();
+                            loadlisttable();
             AddFoodBinding();
             AddAccountBinDing();
+            AddCategoryBinDing();
+                           AddTableBinding();         
             LoadCategoryIntoCombobox(cbFoodCategory);
         }
         void LoadDateTimePickerBill()// Load time
@@ -49,6 +56,18 @@ namespace Demo_QLNH.From
         void LoadListFood()//Load Danh sách thức ăn
         {
             foodList.DataSource = FoodDAO.Instance.GetListFood();
+        }
+        void LoadListCategory()
+        {
+            categoryList.DataSource = CategoryDAO.Instance.GetListCategory();
+        }
+        void loadlisttable()
+         {
+            tableList.DataSource = TableDAO.Instance.GetListTable();
+         }
+        void loadListAccount()
+        {
+            accountList.DataSource = AccountDAO.Instance.GetListAccount();
         }
         void LoadCategoryIntoCombobox(ComboBox cb)// Load danh sách các Danh muc lên combobox
         {
@@ -70,10 +89,18 @@ namespace Demo_QLNH.From
 
 
         }
-        void loadAccount()
+        void AddCategoryBinDing()
         {
-            accountList.DataSource = AccountDAO.Instance.GetListAccount();
+            txtIdCategory.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "id", true, DataSourceUpdateMode.Never));
+            txtCategory.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "name", true, DataSourceUpdateMode.Never));
         }
+        void AddTableBinding()
+        {
+            txtIdTable.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "id", true, DataSourceUpdateMode.Never));
+            txtNameTable.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "name", true, DataSourceUpdateMode.Never));
+            txtSatusTable.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "status", true, DataSourceUpdateMode.Never));
+        }
+
 
         void AddAccount (string userName , string disPlayName, int type)
         {
@@ -87,7 +114,7 @@ namespace Demo_QLNH.From
                 {
                     MessageBox.Show(" Thêm Thất Bại", "Thông Báo");
                 }
-                loadAccount();
+                loadListAccount();
             }
             catch (Exception)
             {
@@ -109,7 +136,7 @@ namespace Demo_QLNH.From
                 {
                     MessageBox.Show(" Sửa Thất Bại", "Thông Báo");
                 }
-                loadAccount();
+                loadListAccount();
             }
             catch (Exception)
             {
@@ -136,7 +163,7 @@ namespace Demo_QLNH.From
                 MessageBox.Show("Xóa tài khoản thất bại","Thông Báo");
             }
 
-            loadAccount();
+            loadListAccount();
         }
 
         void ResetPass(string userName)
@@ -156,6 +183,13 @@ namespace Demo_QLNH.From
 
             return listFood;
         }
+        List<CategoryDTO> SearchFoodCategoryByName(string nameCategory)
+        {
+            List<CategoryDTO> listCategory = CategoryDAO.Instance.SearchCategoryByName(nameCategory);
+
+            return listCategory;
+        }
+
         #endregion
 
 
@@ -280,27 +314,59 @@ namespace Demo_QLNH.From
             }
          
         }
-        // Tạo các even insert, update, delete Food
-        private event EventHandler insertFood;
-        public event EventHandler InsertFood
+        private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            add { insertFood += value; }
-            remove { insertFood -= value; }
-        }
+            try
+            {
+                string nameCategory = txtCategory.Text;
+                if (CategoryDAO.Instance.InsetCategory(nameCategory))
+                {
+                    MessageBox.Show("Thêm danh mục thành công !", "Thông báo !");
+                    LoadListCategory();
+                    if (insertCategory != null)
+                    {
+                        insertCategory(this, new EventArgs());                    }
+                }
+            }
+            catch (Exception)
+            {
 
-        private event EventHandler deleteFood;
-        public event EventHandler DeleteFood
-        {
-            add { deleteFood += value; }
-            remove { deleteFood -= value; }
+                throw;
+            }
         }
+        private void btnEditCategory_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idCategory = int.Parse(txtIdCategory.Text);
+                string nameCategory = txtCategory.Text;
+                if (CategoryDAO.Instance.UpdateCategory(idCategory,nameCategory))
+                {
+                    MessageBox.Show(" Sửa danh mục thành công !", "Thông Báo");
+                    LoadListCategory();
+                    if (updateCategory != null)
+                    {
+                       updateCategory(this, new EventArgs());
+                    }
+                }
+            }
+            catch (Exception)
+            {
 
-        private event EventHandler updateFood;
-        public event EventHandler UpdateFood
-        {
-            add { updateFood += value; }
-            remove { updateFood -= value; }
+                MessageBox.Show(" Sửa danh mục thất bại !", "Thông Báo");
+            }
+            
         }
+        private void btnSearchCategory_Click(object sender, EventArgs e)
+        {
+            categoryList.DataSource = SearchFoodCategoryByName(txtSearchCategory.Text);
+        }
+        private void btnDeleteCategory_Click(object sender, EventArgs e)
+        {
+            
+        }
+        
+
         private void btnSearchFood_Click(object sender, EventArgs e)
         {
            foodList.DataSource = SearchFoodByName(txtSearchFood.Text);
@@ -308,7 +374,12 @@ namespace Demo_QLNH.From
 
         private void btnShowAccount_Click(object sender, EventArgs e)
         {
-            loadAccount();
+            loadListAccount();
+        }
+        private void btnShowCategory_Click(object sender, EventArgs e)
+        {
+           
+            LoadListCategory();
         }
 
         private void btnAddAccount_Click(object sender, EventArgs e)
@@ -336,6 +407,78 @@ namespace Demo_QLNH.From
             string userName = txtNameAccount.Text;
             ResetPass(userName);
         }
+
+        // Cac even cap 2
+        // Tạo các even insert, update, delete Food
+        private event EventHandler insertFood;
+        public event EventHandler InsertFood
+        {
+            add { insertFood += value; }
+            remove { insertFood -= value; }
+        }
+
+        private event EventHandler deleteFood;
+        public event EventHandler DeleteFood
+        {
+            add { deleteFood += value; }
+            remove { deleteFood -= value; }
+        }
+
+        private event EventHandler updateFood;
+        public event EventHandler UpdateFood
+        {
+            add { updateFood += value; }
+            remove { updateFood -= value; }
+        }
+        // Tạo các even insert, update, delete Table
+        private event EventHandler insertTable;
+        public event EventHandler InsertTable
+        {
+            add { insertTable += value; }
+            remove { insertTable -= value; }
+        }
+
+        private event EventHandler deleteTable;
+        public event EventHandler DeleteTable
+        {
+            add { deleteTable += value; }
+            remove { deleteTable -= value; }
+        }
+
+        private event EventHandler updateTable;
+        public event EventHandler UpdateTable
+        {
+            add { updateTable += value; }
+            remove { updateTable -= value; }
+        }
+        // Tạo các even insert, update, delete Category
+        private event EventHandler insertCategory;
+        public event EventHandler InsertCategory
+        {
+            add { insertCategory += value; }
+            remove { insertCategory -= value; }
+        }
+
+        private event EventHandler deleteCategory;
+        public event EventHandler DeleteCategory
+        {
+            add { deleteCategory += value; }
+            remove { deleteCategory -= value; }
+        }
+
+        private event EventHandler updateCategory;
+        public event EventHandler UpdateCategory
+        {
+            add { updateCategory += value; }
+            remove { updateCategory -= value; }
+        }
+
+
+
+
+
+
+
 
 
 
